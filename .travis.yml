@@ -1,0 +1,22 @@
+sudo: required
+services:
+  -docker
+before_install:
+  - docker build -t debora/react-test -f ./client/Dockerfile.dev ./client
+script:
+  - docker run debora/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t debora/multi-client ./client
+  - docker build -t debora/multi-nginx ./nginx
+  - docker build -t debora/multi-server ./server
+  - docker build -t debora/multi-worker ./worker
+  #Log in to the dokcer CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #take those images and push to docker hub
+  - docker push deboraarzu/multi-client
+  - docker push deboraarzu/multi-nginx
+  - docker push deboraarzu/multi-server
+  - docker push deboraarzu/multi-worker
+
+  
