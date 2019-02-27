@@ -24,7 +24,7 @@ after_success:
 #   region: us-est-1
 #   app: multi-docker
 #   env: MultiDocker-env
-#   bucket_name: elasticbeanstalk-us-east-1-
+#   bucket_name: bucket-name
 #   bucket_path: docker-multi
 #   on:
 #     branch: master
