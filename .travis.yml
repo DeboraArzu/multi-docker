@@ -14,9 +14,9 @@ after_success:
   #Log in to the dokcer CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #take those images and push to docker hub
-  - docker push deboraarzu/multi-client
-  - docker push deboraarzu/multi-nginx
-  - docker push deboraarzu/multi-server
-  - docker push deboraarzu/multi-worker
+  - docker push debora/multi-client
+  - docker push debora/multi-nginx
+  - docker push debora/multi-server
+  - docker push debora/multi-worker
 
   
